@@ -99,3 +99,35 @@ Luego podemos correr el comando ```npx eslint --init``` para seguir los pasos de
     }
 }
 ```
+
+### Usar variables de entorno
+Cuando desarrollamos hay ciertos parametros que pueden llegar a variar con el tiempo, o hay cierta información que preferimos mantener confidencial (credenciales, url's, puertos, etc.).
+Para hacer esto se emplean las [variables de entorno](https://es.wikipedia.org/wiki/Variable_de_entorno). Las variables de entorno son variables del sistema opertaivo que pueden ser accedidas por cualquiera desde cualquier parte, y lo mas importante es que son suceptibles de ser modificadas, con lo cual si el día de mañana cambian unas credenciales o una url no es necesario compilar una nueva version de la aplicacion, simplemente se modifica la variable de entorno necesaria en el servidor y la vida sigue.
+El problema es que configurar las variables de entorno a mano una por una cada vez que se quiere desarrollar puede ser bastante doloroso. Por fortuna existen herramientas como [dotenv](https://www.npmjs.com/package/dotenv) que nos facilitan la vida.
+
+Vamos a usar ```dotenv``` para cargar la variable que determina el puerto donde se va a levantar la aplicación. Para ello el primer paso será instalar dotenv con el siguiente comando:
+```
+npm i dotenv
+```
+(Si nos ponemos exquisitos esta tendría que ser una dependencia de desarrollo, como tarea te dejo investigar los problemas que surgen y cómo se solucionan).
+
+Una vez que tenemos la dependencia deberemos crear el archivo ```.env``` en el directorio raiz. **Es muy importante asegurarnos de actualizar el archivo .gitignore, si cometemos el error de subir al repositorio este archivo cometeríamos una grave infracción de seguridad.** La forma más segura de garantizar que no se cometerá nunca este error es agregar lo siguiente al archivo .gitignore:
+```
+**/*.env
+``` 
+De esta forma lo que decimos es "Sin importar en que directorio ni como se llame el archivo, cualquier archivo que termine en '.env' debe ser excluido.
+
+El proximo paso será completar las variables de entorno dentro de este archivo, en nuestro caso de la siguiente manera:
+```
+PORT=4848
+```
+
+Luego habrá que modificar nuestro código para utilizar esta biblioteca.
+Para hacerlo deberemos escribir en la primera linea de ejecucion de nuestro código lo siguiente:
+``` javascript
+require('dotenv').config()
+```
+
+Adicionalmente reemplazaremos todas las definiciones de ```4848``` por una llamada a la variable de entorno del sistema. En node esto se hace con ```process.env.NOMBRE_DE_LA_VARIABLE```.
+De forma que modificaremos esta linea ```const port = 4848``` para que sea ```const port = process.env.PORT```.
+Reiniciamos el servidor para que se apliquen los cambios y todo debería estar listo.

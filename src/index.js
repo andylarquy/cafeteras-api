@@ -1,6 +1,7 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
-const port = 4848
+const port = process.env.PORT
 const cafeteras = require('./cafeteras.json')
 
 const getCafeteraById = cafeteraId => cafeteras.find(cafetera => cafetera.id === cafeteraId)
