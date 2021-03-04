@@ -70,3 +70,32 @@ Si fuesemos a correrlo en una instancia en produccion deberiamos usar el comando
 ```
 npm run build
 ```
+
+## Bonus
+
+### Configurar un linter
+El primer paso es agregar la dependencia de ```eslint``` (que es el linter usado por estandar hoy en día en node):
+```
+npm install -D eslint
+```
+Luego podemos correr el comando ```npx eslint --init``` para seguir los pasos de configuracion que nos propone eslint, yo sugiero ir por una vía más rudiementaria y crear un archivo llamado ```.eslintrc.json``` con el siguiente contenido:
+```json
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "rules": {
+        "semi": ["error", "never"],
+        "quotes": ["warn", "single"]
+    }
+}
+```
