@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "modelo": "Nescafe Genio",
+        "foto": "https://i.imgur.com/DiGF7Ul.jpg",
+        "precio": 13000,
+        "descripcion": "Nuestra robusta y elegante máquina automática de café en cápsulas Genio se adapta perfectamente a cualquier cocina."
+    },
+    {
+        "id": "2",
+        "modelo": "Cafetera Express Philips Ep2231/42",
+        "foto": "https://lamutualdeamr.org.ar/lamedica/LMVProductosImagenes/14097_30795.jpg",
+        "precio": 90000,
+        "descripcion": "3 deliciosos cafés de grano recién molido, más fácil que nunca, LatteGo, el sistema de leche que más rápido se limpia."
+    },
+    {
+        "id": "3",
+        "modelo": "Cafetera Oster Express",
+        "foto": "https://i.imgur.com/cxqFwYp.jpg",
+        "precio": 32500,
+        "descripcion": "Nuestro innovador sistema termobloc de calentamiento que hierve el agua más rápido y asegura la temperatura adecuada para garantizar una extracción óptima del sabor y aroma del café"
+    }
+]
