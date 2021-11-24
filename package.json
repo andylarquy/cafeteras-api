@@ -20,7 +20,7 @@
   "homepage": "https://github.com/andylarquy/cafeteras-api#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "node": "^15.10.0"
+    "node": "^15.14.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
